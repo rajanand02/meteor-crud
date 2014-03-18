@@ -1,0 +1,15 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "bootstrap-flatly": {}
+    },
+    "packages": {
+      "bootstrap-flatly": {
+        "git": "https://github.com/grokbot/meteor-bootstrap-flatly.git",
+        "tag": "v0.0.3",
+        "commit": "ca8eb1730f1090b8d6e0db75efbe566a2ff27ee7"
+      }
+    }
+  }
+}
