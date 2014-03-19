@@ -26,7 +26,7 @@
   <div class="form-group">
     <label class="control-label">Create post</label>
     <div class="input-group">
-      <input type="text" class="form-control">
+      <input type="text" id="content" class="form-control">
       <span class="input-group-btn">
         <button class="btn btn-success" type="button">Create</button>
       </span>
@@ -40,10 +40,12 @@
 
   <template name="post">
     <li>
-      {{#if change}}
-      <input type="text" value="{{content}}" />
+      {{#if editing}}
+      <input type="text"  value="{{content}}" />
       {{else}}
-      <p>{{content}}</p> 
+      <p class="content" id = "up">{{content}}
+        </p> 
+        <button class="btn btn-sm btn-danger" id = 'delete' type="submit">Delete</button>
       {{/if}}
     </li>
   </template>
