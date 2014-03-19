@@ -30,7 +30,8 @@
       <span class="input-group-btn">
         <button class="btn btn-success" type="button">Create</button>
       </span>
-    </div>
+      </div>
+  </div>
   </template>
   <template name="posts">
     {{#each post}}
@@ -39,13 +40,12 @@
   </template>
 
   <template name="post">
-    <li>
       {{#if editing}}
-      <input type="text"  value="{{content}}" />
+        <input type="text" class="form-control" value="{{content}}" />
       {{else}}
-      <p class="content" id = "up">{{content}}
-        </p> 
+      <p>
+        <span class="content col-md-10" id = "up"  >{{content}}</span> 
         <button class="btn btn-sm btn-danger" id = 'delete' type="submit">Delete</button>
+      </p>
       {{/if}}
-    </li>
   </template>

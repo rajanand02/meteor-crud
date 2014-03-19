@@ -1,20 +1,21 @@
 Post = new Meteor.Collection("post")
 if Meteor.isClient
-  # Read
-  Template.posts.post = ->
-    Post.find()
-  
   # create
   Template.postForm.events 
     "click button": (e, t) ->
       target = t.find("#content")
       Post.insert content: target.value
       target.value = ""
+  
+  # Read
+  Template.posts.post = ->
+    Post.find()
+  
 
+  # update
   Template.post.editing = ->
     Session.get "edit-" + @_id
   
-  # edit
   Template.post.events
     "click #up": (e, t) ->
       Session.set "edit-" + t.data._id, true
