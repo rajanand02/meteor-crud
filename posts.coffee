@@ -3,28 +3,27 @@ if Meteor.isClient
   # create
   Template.postForm.events 
     "click button": (e, t) ->
-      target = t.find("#content")
-      Post.insert content: target.value
-      target.value = ""
+      data = t.find("#content")
+      Post.insert content: data.value
+      data.value = ""
   
   # Read
   Template.posts.post = ->
     Post.find()
-  
 
   # update
   Template.post.editing = ->
-    Session.get "edit-" + @_id
+    Session.get "target" + @_id
   
   Template.post.events
-    "click #up": (e, t) ->
-      Session.set "edit-" + t.data._id, true
+    "click #edit": (e, t) ->
+      Session.set "target" + t.data._id, true
 
     "keypress input": (e, t) ->
       if e.keyCode is 13
         post = Post.findOne(t.data)
         Post.update {_id: post._id}, { $set: content: e.currentTarget.value}
-        Session.set "edit-" + t.data._id, false
+        Session.set "target" + t.data._id, false
       return
   
     # delete
