@@ -9,3 +9,5 @@ insecure
 preserve-inputs
 bootstrap-flatly
 coffeescript
+accounts-ui
+accounts-github
