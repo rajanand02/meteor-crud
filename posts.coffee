@@ -3,7 +3,7 @@ if Meteor.isClient
   # create
   Template.postForm.events 
     "click button": (e, t) ->
-      data = t.find("#content")
+      data = t.find "#content"
       Post.insert content: data.value
       data.value = ""
   
@@ -24,7 +24,6 @@ if Meteor.isClient
         post = Post.findOne(t.data)
         Post.update {_id: post._id}, { $set: content: e.currentTarget.value}
         Session.set "target" + t.data._id, false
-      return
   
     # delete
     "click #delete": (e, t) ->
