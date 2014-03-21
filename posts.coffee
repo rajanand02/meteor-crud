@@ -1,4 +1,4 @@
-Post = new Meteor.Collection("post")
+Posts = new Meteor.Collection "posts"
 if Meteor.isClient
   
   # create
@@ -6,12 +6,12 @@ if Meteor.isClient
     "click button": (e, t) ->
       firstName = if Meteor.user() then Meteor.user().profile.name else "Guest"
       data = t.find "#content"
-      Post.insert {content: data.value, firstName: firstName, time: Date.now()} if data.value isnt ""
+      Posts.insert {content: data.value, firstName: firstName, time: Date.now()} if data.value isnt ""
       data.value = ""
   
   # Read
   Template.posts.post = ->
-    Post.find({}, { sort: time: -1})
+    Posts.find({}, { sort: time: -1})
 
   # update
   Template.post.editing = ->
@@ -23,12 +23,12 @@ if Meteor.isClient
 
     "keypress input": (e, t) ->
       if e.keyCode is 13
-        post = Post.findOne(t.data)
-        Post.update {_id: post._id}, { $set: content: e.currentTarget.value}
+        post = Posts.findOne(t.data)
+        Posts.update {_id: post._id}, { $set: content: e.currentTarget.value}
         Session.set "target" + t.data._id, false
   
     # delete
     "click #delete": (e, t) ->
-      post = Post.findOne(t.data)
-      Post.remove _id: post._id
+      post = Posts.findOne(t.data)
+      Posts.remove _id: post._id
 
